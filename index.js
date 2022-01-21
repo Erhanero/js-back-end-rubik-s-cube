@@ -1,15 +1,18 @@
 const express = require("express");
 const handlebars = require("express-handlebars");
 
+const hbs = handlebars.create({
+    extname: ".hbs"
+})
+
 const app = express();
 
-app.engine("hbs", handlebars({
-    extname: "hbs"
-}));
+app.engine("hbs", hbs.engine);
 app.set("view engine", "hbs");
 
+app.use(express.static("static"))
+
 app.all("/", (req, res) => {
-    res.send("Hello World");
     res.render("index", { layout: false });
 })
 
