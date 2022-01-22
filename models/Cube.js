@@ -13,6 +13,11 @@ class Cube {
 
     }
 
+    static getCube(cubeId) {
+        let cube = Cube.#cubes.find(x => x.id == cubeId);
+        return cube;
+    }
+
     static getAll() {
         return Cube.#cubes.slice();
     }

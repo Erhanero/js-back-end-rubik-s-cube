@@ -4,6 +4,9 @@ const Cube = require("../models/Cube");
 
 // const getAll = () => cubeDb.slice();
 const getAll = () => Cube.getAll();
+
+const getCube = (id) => Cube.getCube(id);
+
 const create = (name, description, imageUrl, difficultyLevel) => {
 
     let cube = new Cube(name, description, imageUrl, difficultyLevel);
@@ -13,7 +16,8 @@ const create = (name, description, imageUrl, difficultyLevel) => {
 
 const cubeService = {
     create,
-    getAll
+    getAll,
+    getCube
 }
 
 module.exports = cubeService;
