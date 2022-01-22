@@ -6,6 +6,8 @@ const homeController = require("./controllers/homeController");
 
 router.use("/", homeController);
 router.use(cubeController);
-
+router.use("*", (req, res) => {
+    res.render("404")
+})
 
 module.exports = router;

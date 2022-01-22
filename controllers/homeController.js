@@ -8,11 +8,11 @@ const router = express.Router();
 router.get("/", (req, res) => {
     let cubes = cubeService.getAll();
     console.log(cubes)
-    res.render("index", { cubes, layout: false });
+    res.render("index", { cubes });
 });
 
 router.get("/about", (req, res) => {
-    res.render("about", { layout: false })
+    res.render("about")
 })
 
 module.exports = router;

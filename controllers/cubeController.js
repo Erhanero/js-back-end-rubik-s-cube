@@ -2,12 +2,9 @@ const express = require("express");
 const cubeService = require("../services/cubeService");
 
 const router = express.Router();
-
 router.get("/create", (req, res) => {
 
-    let cubes = cubeService.getAll();
-
-    res.render("create", { layout: false });
+    res.render("create");
 });
 
 router.post("/create", (req, res) => {
