@@ -1,30 +1,35 @@
-const uniqid = require("uniqid");
+const mongoose = require("mongoose");
 
-class Cube {
 
-    static #cubes = [];
-
-    constructor(name, description, imageUrl, difficultyLevel) {
-        this.id = uniqid();
-        this.name = name;
-        this.description = description;
-        this.imageUrl = imageUrl;
-        this.difficultyLevel = difficultyLevel;
-
+const cubeSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true,
+    },
+    description: {
+        type: String,
+        required: true,
+        maxlength: 100,
+    },
+    imageUrl: {
+        type: String,
+        required: true,
+        validate: {
+            validator: function () {
+                return /^https?:\/\//i.test(value)
+            },
+            message: "Image Url is invalid1"
+        }
+    },
+    difficultyLevel: {
+        type: Number,
+        require: true,
+        min: 1,
+        max: 5
     }
+});
 
-    static getCube(cubeId) {
-        let cube = Cube.#cubes.find(x => x.id == cubeId);
-        return cube;
-    }
+const Cube = mongoose.model("Cube", cubeSchema);
 
-    static getAll() {
-        return Cube.#cubes.slice();
-    }
-
-    static add(cube) {
-        Cube.#cubes.push(cube);
-    }
-}
 
 module.exports = Cube;
