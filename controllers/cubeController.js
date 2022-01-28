@@ -7,9 +7,9 @@ router.get("/create", (req, res) => {
     res.render("create");
 });
 
-router.post("/create", (req, res) => {
+router.post("/create", async (req, res) => {
     let { name, description, imageUrl, difficultyLevel } = req.body;
-    cubeService.create(name, description, imageUrl, difficultyLevel);
+    await cubeService.create(name, description, imageUrl, difficultyLevel);
 
     res.redirect("/");
 })

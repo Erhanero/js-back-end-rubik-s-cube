@@ -15,10 +15,10 @@ const cubeSchema = new mongoose.Schema({
         type: String,
         required: true,
         validate: {
-            validator: function () {
+            validator: function (value) {
                 return /^https?:\/\//i.test(value)
             },
-            message: "Image Url is invalid1"
+            message: "Image Url is invalid!"
         }
     },
     difficultyLevel: {

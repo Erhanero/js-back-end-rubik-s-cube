@@ -5,8 +5,9 @@ const router = express.Router();
 
 
 
-router.get("/", (req, res) => {
-    let cubes = cubeService.getAll();
+router.get("/", async (req, res) => {
+    let cubes = await cubeService.getAll();
+    console.log(cubes)
     res.render("index", { cubes });
 });
 
@@ -14,9 +15,9 @@ router.get("/about", (req, res) => {
     res.render("about");
 })
 
-router.get("/details/:id", (req, res) => {
+router.get("/details/:id", async (req, res) => {
     let cube = cubeService.getCube(req.params.id);
-    res.render("details", { cube });
+    await res.render("details", { cube });
 
 })
 

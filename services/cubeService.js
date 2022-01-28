@@ -3,15 +3,22 @@ const Cube = require("../models/Cube");
 // const cubeDb = [];
 
 // const getAll = () => cubeDb.slice();
-const getAll = () => Cube.getAll();
+const getAll = () => Cube.find({}).lean()
+    ;
 
-const getCube = (id) => Cube.getCube(id);
+const getCube = (id) => Cube.findById(id);
 
 const create = (name, description, imageUrl, difficultyLevel) => {
 
-    let cube = new Cube(name, description, imageUrl, difficultyLevel);
+    let cube = new Cube({
+        name,
+        description,
+        imageUrl,
+        difficultyLevel,
 
-    Cube.add(cube)
+    });
+
+    return cube.save();
 }
 
 const cubeService = {
