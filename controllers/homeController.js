@@ -16,8 +16,8 @@ router.get("/about", (req, res) => {
 })
 
 router.get("/details/:id", async (req, res) => {
-    let cube = cubeService.getCube(req.params.id);
-    await res.render("details", { cube });
+    let cube = await cubeService.getCube(req.params.id);
+    res.render("details", { cube });
 
 })
 
