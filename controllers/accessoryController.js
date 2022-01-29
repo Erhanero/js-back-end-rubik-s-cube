@@ -17,8 +17,9 @@ router.post("/create/accessory", async (req, res) => {
 
 router.get("/:cubeId/add/accessory", async (req, res) => {
 
-    let accessories = await accessoryService.getAll();
     let cube = await cubeService.getCube(req.params.cubeId)
+    let accessories = await accessoryService.getAllWithout(cube.accessories.map(x => x._id));
+    console.log(accessories)
     res.render("attachAccessory", { cube, accessories });
 });
 

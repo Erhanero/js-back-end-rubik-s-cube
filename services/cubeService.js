@@ -5,7 +5,7 @@ const Cube = require("../models/Cube");
 // const getAll = () => cubeDb.slice();
 const getAll = () => Cube.find({}).lean();
 
-const getCube = (id) => Cube.findById(id).lean();
+const getCube = (id) => Cube.findById(id).populate("accessories").lean();
 
 const create = (name, description, imageUrl, difficultyLevel) => {
 

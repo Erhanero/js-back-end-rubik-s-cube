@@ -18,10 +18,16 @@ async function atachAccessory(cubeId, accesoryId) {
     return cube.save();
 }
 
+async function getAllWithout(id) {
+    return await Accessory.find().where("_id").nin(id).lean();
+
+}
+
 const accessoryService = {
     create,
     getAll,
-    atachAccessory
+    atachAccessory,
+    getAllWithout
 }
 
 module.exports = accessoryService;
