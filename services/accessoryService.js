@@ -4,8 +4,13 @@ async function create(name, imageUrl, description) {
     return Accessory.create({ name, imageUrl, description })
 }
 
+async function getAll() {
+    return Accessory.find({}).lean();
+}
+
 const accessoryService = {
-    create
+    create,
+    getAll
 }
 
 module.exports = accessoryService;
