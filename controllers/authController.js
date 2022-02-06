@@ -5,8 +5,9 @@ router.get("/login", (req, res) => {
     res.render("loginPage");
 });
 
-router.post("/login", (req, res) => {
-
+router.post("/login", async (req, res) => {
+    const { username, password } = req.body;
+    await authService.login(username, password);
 });
 
 router.get("/register", (req, res) => {

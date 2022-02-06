@@ -19,7 +19,11 @@ userSchema.pre("save", async function (next) {
     this.password = hashedPassword;
 
     next();
-})
+});
+
+userSchema.static("findByUsername", async function (username) {
+    return await this.findOne({ username });
+});
 
 const User = mongoose.model("User", userSchema);
 
