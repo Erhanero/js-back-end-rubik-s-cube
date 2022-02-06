@@ -11,8 +11,7 @@ async function getAll() {
 async function atachAccessory(cubeId, accesoryId) {
     let cube = await Cube.findById(cubeId)
     let accessory = await Accessory.findById(accesoryId)
-    console.log(cube)
-    console.log(accessory)
+
 
     cube.accessories.push(accessory);
     return cube.save();
