@@ -6,7 +6,7 @@ const cubeService = require("../services/cubeService");
 const router = express.Router();
 
 router.get("/create/accessory", (req, res) => {
-    res.render("createAccessory")
+    res.render("createAccessory");
 })
 
 router.post("/create/accessory", async (req, res) => {
@@ -18,9 +18,7 @@ router.post("/create/accessory", async (req, res) => {
 router.get("/:cubeId/add/accessory", async (req, res) => {
 
     let cube = await cubeService.getCube(req.params.cubeId);
-    console.log(cube)
     let accessories = await accessoryService.getAllWithout(cube.accessories.map(x => x._id));
-    console.log(accessories)
     res.render("attachAccessory", { cube, accessories });
 });
 
