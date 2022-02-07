@@ -17,10 +17,19 @@ const create = (name, description, imageUrl, difficultyLevel) => {
     return cube.save();
 }
 
+const deleteCube = async (id) => {
+    await Cube.findByIdAndDelete(id);
+}
+
+const updateCube = async (id, cube) => {
+    await Cube.findByIdAndUpdate(id, cube)
+}
 const cubeService = {
     create,
     getAll,
-    getCube
+    getCube,
+    deleteCube,
+    updateCube
 }
 
 module.exports = cubeService;
