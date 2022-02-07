@@ -8,6 +8,7 @@ const router = express.Router();
 router.get("/", async (req, res) => {
     let cubes = await cubeService.getAll();
     res.render("index", { cubes });
+    console.log(req.cookies.app_token)
 });
 
 router.get("/about", (req, res) => {

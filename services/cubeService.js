@@ -1,8 +1,5 @@
 const Cube = require("../models/Cube");
 
-// const cubeDb = [];
-
-// const getAll = () => cubeDb.slice();
 const getAll = () => Cube.find({}).lean();
 
 const getCube = (id) => Cube.findById(id).populate("accessories").lean();

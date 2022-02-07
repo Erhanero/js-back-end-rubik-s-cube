@@ -3,6 +3,7 @@ const routerController = require("./routes");
 const handlebars = require("express-handlebars");
 const initDataBase = require("./services/database");
 const cookieParser = require("cookie-parser");
+const { authMiddleware, isAuth } = require("./middlewares/authMiddleware");
 
 const hbs = handlebars.create({
     extname: ".hbs"
@@ -16,6 +17,7 @@ app.set("view engine", "hbs");
 app.use(cookieParser());
 app.use(express.static("static"));
 app.use(express.urlencoded({ extended: true }));
+app.use(authMiddleware);
 app.use(routerController);
 
 

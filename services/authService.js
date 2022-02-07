@@ -1,6 +1,7 @@
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const { tokenSecret } = require("../constants");
 
 async function register(username, password, repeatPassword) {
 
@@ -35,14 +36,9 @@ function createToken(user) {
         _id: user._id,
         username: user.username
     }
-
-    let secret = "2T34X2DS223G7873H45"
-
-    const token = jwt.sign(payload, secret);
+    const token = jwt.sign(payload, tokenSecret);
     return token;
-
 }
-
 
 module.exports = {
     register,
