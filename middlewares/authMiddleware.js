@@ -19,8 +19,9 @@ const authMiddleware = function (req, res, next) {
 }
 
 const isAuth = function (req, res, next) {
+    console.log(req.user)
     if (!req.user) {
-        res.redirect("/login")
+        return res.status(401).redirect("/login");
     }
     next();
 }

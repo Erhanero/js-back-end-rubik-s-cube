@@ -2,7 +2,7 @@ const router = require("express").Router();
 const authService = require("../services/authService");
 
 router.get("/login", (req, res) => {
-    res.render("loginPage");
+    res.render("login");
 });
 
 router.post("/login", async (req, res) => {
@@ -23,7 +23,7 @@ router.post("/login", async (req, res) => {
 
 router.get("/register", (req, res) => {
 
-    res.render("registerPage");
+    res.render("register");
 });
 
 router.post("/register", async (req, res) => {
