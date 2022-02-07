@@ -9,6 +9,8 @@ router.post("/login", async (req, res) => {
     const { username, password } = req.body;
     const user = await authService.login(username, password);
     if (user) {
+        const token = authService.createToken(user);
+        console.log(token)
         res.redirect("/")
     } else {
 
