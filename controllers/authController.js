@@ -10,7 +10,10 @@ router.post("/login", async (req, res) => {
     const user = await authService.login(username, password);
     if (user) {
         const token = authService.createToken(user);
-        console.log(token)
+        console.log(token);
+        res.cookie("app_tokken", token, {
+            httpOnly: true
+        })
         res.redirect("/")
     } else {
 
