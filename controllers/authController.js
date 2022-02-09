@@ -26,6 +26,7 @@ router.get("/register", (req, res) => {
     res.render("register");
 });
 
+
 router.post("/register", async (req, res) => {
     const { username, password, repeatPassword } = req.body;
     try {
@@ -37,10 +38,14 @@ router.post("/register", async (req, res) => {
         }
 
     } catch (err) {
-        console.log(err.message);
-        res.status(401).send(err.message);
+        res.status(400).render("register", { error: err.message });
     }
 
-})
+});
+
+router.get("/logout", (req, res) => {
+    res.clearCookie("app_token");
+    res.redirect("/")
+});
 
 module.exports = router;
