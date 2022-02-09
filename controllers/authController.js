@@ -28,9 +28,19 @@ router.get("/register", (req, res) => {
 
 router.post("/register", async (req, res) => {
     const { username, password, repeatPassword } = req.body;
+    try {
+        if (password == repeatPassword) {
+            await authService.register(username, password);
+            res.redirect("/login");
+        } else {
+            throw new Error("Passwords don't match!")
+        }
 
-    await authService.register(username, password);
-    res.redirect("/login");
+    } catch (err) {
+        console.log(err.message);
+        res.status(401).send(err.message);
+    }
+
 })
 
 module.exports = router;

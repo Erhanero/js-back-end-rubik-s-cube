@@ -5,6 +5,7 @@ const cubeSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
+        mingLength: 3,
     },
     description: {
         type: String,

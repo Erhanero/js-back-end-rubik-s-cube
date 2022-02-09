@@ -3,7 +3,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { tokenSecret } = require("../constants");
 
-async function register(username, password, repeatPassword) {
+async function register(username, password) {
 
     return await User.create({ username, password })
 
