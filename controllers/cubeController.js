@@ -14,7 +14,7 @@ router.get("/create", isAuth, (req, res) => {
 
 router.post("/create", isAuth, async (req, res) => {
     let { name, description, imageUrl, difficultyLevel } = req.body;
-    await cubeService.create(name, description, imageUrl, difficultyLevel);
+    await cubeService.create(name, description, imageUrl, difficultyLevel, req.user._id);
 
     res.redirect("/");
 });

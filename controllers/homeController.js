@@ -15,7 +15,8 @@ router.get("/about", (req, res) => {
 
 router.get("/details/:id", async (req, res) => {
     let cube = await cubeService.getCube(req.params.id);
-    res.render("details", { cube });
+    let isOwner = cube.creator == req.user._id
+    res.render("details", { cube, isOwner });
 
 })
 

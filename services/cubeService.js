@@ -4,14 +4,14 @@ const getAll = () => Cube.find({}).lean();
 
 const getCube = (id) => Cube.findById(id).populate("accessories").lean();
 
-const create = (name, description, imageUrl, difficultyLevel) => {
+const create = (name, description, imageUrl, difficultyLevel, creator) => {
 
     let cube = new Cube({
         name,
         description,
         imageUrl,
         difficultyLevel,
-
+        creator
     });
 
     return cube.save();
